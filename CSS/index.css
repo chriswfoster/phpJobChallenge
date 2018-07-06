@@ -1,0 +1,20 @@
+.indexBody {
+  width: 100vw;
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+justify-content: center;
+align-items: center;
+align-content: stretch;
+}
+
+.indexLogo {
+  width: 50vw;
+}
+
+.indexUserInfo{
+    border: solid 1px;
+    background-color: yellow;
+    padding: 2vh;
+    border-radius: 12px;
+}
