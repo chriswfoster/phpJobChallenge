@@ -34,21 +34,20 @@
 <div>
     <?php
 
-include 'confidential.php';
-$con=mysqli_connect($servername, $username, $password, $dbname);
+include 'confidential.php'; // this is a file I'm not pushing to github. It contains credentials to a MariaDB/MySQL server that I host a lot of content on :)
+$con=mysqli_connect($servername, $username, $password, $dbname); // these things are from confidential.php
+
 // Check connection
 if(mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysql_connect_error();
 }
-
 if($_SERVER['REQUEST_METHOD']=='POST'){
 $user = $_POST["user"];
 $password = $_POST["userpassword"];
     doThis($user, $password, $con);
 }
 
-function doThis($user, $password, $con) {
-    
+function doThis($user, $password, $con) {   
     $sql = "SELECT * FROM monkedia_users where username = \"$user\"";
     $result = mysqli_query($con, $sql);
 
