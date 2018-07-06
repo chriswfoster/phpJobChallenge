@@ -48,15 +48,22 @@ $password = $_POST["userpassword"];
 }
 
 function doThis($user, $password, $con) {
-    echo "username is $user and password is $password </br>";
+    
     $sql = "SELECT * FROM monkedia_users where username = \"$user\"";
     $result = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        echo "id: " . $row["id"]. " - username: " . $row["username"] . " - password is: " . $row["password"];
-    } }else {
-        echo "0 results";
+        if ($row["password"] !== $password){
+            echo "Wrong password!";
+        } else {
+            $url = "/customerSearch.php/";
+            echo "<script> location.replace($url); </script>";
+        }
+        
+    }
+ }else {
+        echo "No such user found!";
     }
     $con -> close();
 
