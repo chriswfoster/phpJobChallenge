@@ -2,6 +2,6 @@ $sql = "CREATE TABLE Monkedia_clients (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 firstname VARCHAR(30) NOT NULL,
 lastname VARCHAR(30) NOT NULL,
-email VARCHAR(50),
+email VARCHAR(50) UNIQUE,
 reg_date TIMESTAMP
 )";

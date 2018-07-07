@@ -9,8 +9,8 @@
             <tr>
                 <td class="tableSizing">Search by:</td>
                 <td>
-                    <select id="clientSelect" name="selected">
-                        <option value="name">Name</option>
+                    <select id="clientSelect" name="type" >
+                        <option value="name"  selected="selected">Name</option>
                         <option value="id">ID</option>
                     </select>
                 </td>
@@ -21,15 +21,11 @@
                 <td id="clientsid" class="tableSizing">Client ID:</td>
                 
                 <td align="center">
-                    <input id="clientSearchBox" placeholder="Type Client Name Here" type="text" name="user" size="30" />
+                    <input id="clientSearchBox" placeholder="Type Client Name Here" type="text" name="person" size="30" />
                 </td>
             </tr>
             <script> 
-// 
-// $("button").click(function(){
-//     $("#clientsname").toggle()
-//     $("#clientsid").toggle()
-// });
+
 $("#clientsid").hide()
 $("#clientSelect").change(function(e) {
   e.target.value === "name" ? ($("#clientsid").hide() 
@@ -52,6 +48,35 @@ $("#clientSelect").change(function(e) {
 
     <?php
 
+include 'confidential.php'; // this is a file I'm not pushing to github. It contains credentials to a MariaDB/MySQL server that I host a lot of content on :)
+$con=mysqli_connect($servername, $username, $password, $dbname); // these things are from confidential.php
+
+// Check connection
+if(mysqli_connect_errno()){
+    echo "Failed to connect to MySQL: " . mysql_connect_error();
+}
+if($_SERVER['REQUEST_METHOD']=='POST'){
+$person = $_POST["person"];
+$type = $_POST["type"];
+    idSearch($person, $type, $con);
+}
+
+function idSearch($id, $type, $con) {
+  
+    $sql = "SELECT * FROM monkedia_clients where id = $id";
+    $result = mysqli_query($con, $sql);
+
+    if (mysqli_num_rows($result) > 0){
+    while($row = mysqli_fetch_assoc($result)){
+        echo $row["firstname"];
+        
+    }
+ }else {
+        echo "No such user found!";
+    }
+    $con -> close();
+
+}
 
 ?>
 </body>
