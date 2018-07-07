@@ -1,10 +1,10 @@
 <html>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/CSS/customerSearch.css">
-<body class="cSBody">
+    <body class="cSBody">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/CSS/customerSearch.css">
 
-<p>Search for Clients:</p>
-    <form method="post">
+        <p>Search for Clients:</p>
+        <form method="post">
         <table border="0">
             <tr>
                 <td class="cellSizing fontWeight">Search by:</td>
@@ -17,7 +17,6 @@
                     </select>
                 </td>
             </tr>
-
             <tr>
                 <td id="clientsfirstname" class="cellSizing fontWeight">Client's First Name:</td>
                 <td id="clientslastname" class="cellSizing fontWeight">Client's Last Name:</td>

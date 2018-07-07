@@ -6,6 +6,11 @@
   background-color: black;
 }
 .cSBody {
+    margin-top: 0px;
+    margin-left: 0px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -17,4 +22,34 @@
 
 .fontWeight {
   font-weight: bold;
+}
+
+html {
+  background-image: url("/images/Facebook-monkedia.jpg");
+  background-size: 100% 100%;
+ 
+}
+body {
+  /* transition: background-color 3s linear; */
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0vw;
+  top: 0vh;
+  animation-name: bgimage;
+  animation-duration: 3s;
+}
+@keyframes bgimage {
+  0% {
+    background-color: black;
+  }
+
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+p {
+    padding: 0px;
+    margin: 2vh;
 }
