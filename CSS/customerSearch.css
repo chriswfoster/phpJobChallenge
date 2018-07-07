@@ -1,13 +1,20 @@
-.tableSizing {
-    width: 20vw;
-    font-weight: bold;
+.cellSizing {
+  width: 17vw;
+  background-color: white;
 }
-.cSBody{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: stretch;
+.tableStyling {
+  background-color: black;
+}
+.cSBody {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+}
+
+.fontWeight {
+  font-weight: bold;
 }

@@ -7,20 +7,22 @@
     <form method="post">
         <table border="0">
             <tr>
-                <td class="tableSizing">Search by:</td>
+                <td class="cellSizing fontWeight">Search by:</td>
                 <td>
                     <select id="clientSelect" name="type" >
-                        <option value="firstname" selected="selected">First Name</option>
-                        <option value="lastname">Last Name</option>
-                        <option value="email">Email</option>
-                        <option value="id">ID</option>
+                        <option value="Firstname" selected="selected">First Name</option>
+                        <option value="Lastname">Last Name</option>
+                        <option value="Email">Email</option>
+                        <option value="ID">ID</option>
                     </select>
                 </td>
             </tr>
 
             <tr>
-                <td id="clientsname" class="tableSizing">Clients Name:</td>
-                <td id="clientsid" class="tableSizing">Client ID:</td>
+                <td id="clientsfirstname" class="cellSizing fontWeight">Client's First Name:</td>
+                <td id="clientslastname" class="cellSizing fontWeight">Client's Last Name:</td>
+                <td id="clientsid" class="cellSizing fontWeight">Client's ID:</td>
+                <td id="clientsemail" class="cellSizing fontWeight">Client's Email:</td>
                 
                 <td align="center">
                     <input id="clientSearchBox" placeholder="Type Client Name Here" type="text" name="person" size="30" />
@@ -28,15 +30,25 @@
             </tr>
             <script> 
 
-$("#clientsid").hide()
+$("#clientsid, #clientsemail, #clientslastname").hide()
 $("#clientSelect").change(function(e) {
-  e.target.value === "name" ? ($("#clientsid").hide() 
-  && $("#clientsname").show()
-  && $("#clientSearchBox").attr("placeholder", "Type Client Name Here")) 
-  : ($("#clientsid").show() 
-  && $("#clientsname").hide()
-  && $("#clientSearchBox").attr("placeholder", "Type Client ID Here"))
-});
+  if (e.target.value === "Firstname") {
+      $("#clientsid, #clientsemail, #clientslastname").hide() 
+  && $("#clientsfirstname").show()
+    } else if (e.target.value === "ID"){
+   $("#clientsfirstname, #clientsemail, #clientslastname").hide()
+  &&  $("#clientsid").show() 
+}else if (e.target.value === "Lastname"){
+   $("#clientsfirstname, #clientsemail, #clientsid").hide()
+  &&  $("#clientslastname").show() 
+} else if (e.target.value === "Email"){
+   $("#clientsfirstname, #clientsid, #clientslastname").hide()
+  &&  $("#clientsemail").show() 
+}
+$("#clientSearchBox").attr("placeholder", "Type Client " + e.target.value + " Here")
+})
+
+
 </script>
             <tr>
                 <td colspan="2" align="center">
@@ -61,7 +73,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 $person = $_POST["person"];
 $type = $_POST["type"];
 
-if ($type === "id"){
+if ($type === "ID"){
     idSearch($person, $con);
 } else {
     nameSearch($person, $type, $con);
@@ -73,7 +85,9 @@ function idSearch($id, $con) {
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        echo $row["firstname"];
+        echo "<table><tr><td class='cellSizing fontWeight'>User ID</td><td class='cellSizing fontWeight'>First Name</td><td class='cellSizing fontWeight'>Last Name</td><td class='cellSizing fontWeight'>Email</td><td class='cellSizing fontWeight'>Registration Date</td> </tr>";
+        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["firstname"]. "</td><td>" . $row["lastname"]. "</td><td>" . $row["email"]. "</td><td>" . $row["reg_date"]. "</td></tr>";
+        echo "</table>";
     }
  }else {
         echo "No such user found!";
@@ -85,10 +99,10 @@ function nameSearch($person, $type, $con){
  
     $sql = "SELECT * FROM monkedia_clients where LOWER($type) LIKE LOWER(\"%$person%\")";
     $result = mysqli_query($con, $sql);
-    echo "<table><tr><td class='tableSizing'>First Name</td><td class='tableSizing'>Last Name</td><td class='tableSizing'>Email</td><td class='tableSizing'>Registration Date</td> </tr>";
+    echo "<table class='tableStyling'><tr><td class='cellSizing fontWeight'>User ID</td><td class='cellSizing fontWeight'>First Name</td><td class='cellSizing fontWeight'>Last Name</td><td class='cellSizing fontWeight'>Email</td><td class='cellSizing fontWeight'>Registration Date</td> </tr>";
     if (mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
-            echo "<tr><td>" . $row["firstname"]. "</td><td>" . $row["lastname"]. "</td><td>" . $row["email"]. "</td><td>" . $row["reg_date"]. "</td></tr>";
+            echo "<tr><td class='cellSizing'>" . $row["id"]. "</td><td class='cellSizing'>" . $row["firstname"]. "</td><td class='cellSizing'>" . $row["lastname"]. "</td><td class='cellSizing'>" . $row["email"]. "</td><td class='cellSizing'>" . $row["reg_date"]. "</td></tr>";
         }
      }else {
             echo "No such client found!";
