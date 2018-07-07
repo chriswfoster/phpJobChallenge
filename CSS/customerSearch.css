@@ -1,34 +1,29 @@
 .cellSizing {
   width: 17vw;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.904);
+  color: white;
 }
 .tableStyling {
-  background-color: black;
+  background-color: rgba(255, 255, 255, 0.7);
 }
-.cSBody {
-  margin-top: 0px;
-  margin-left: 0px;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  width: 100vw;
-  animation-name: bgimage;
-  animation-duration: 3s;
-}
-.bounceDiv {
+
+.upperDiv {
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   align-content: stretch;
-  animation-name: bounceDiv;
-  -webkit-animation-name: bounceDiv;
-  animation-duration: 2s;
-  -webkit-animation-duration: 2s;
-  position: absolute;
-  top: 0vh;
-  width: 100vw;
+  padding: 0 12vw 0 12vw;
+  border-radius: 100px 100px 0 0;
+  border-style: solid;
+  border-color: white white rgba(0, 0, 0, 0) white;
+}
+.upperDiv p {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .fontWeight {
@@ -37,9 +32,25 @@
 
 html {
   background-image: url("/images/Facebook-monkedia.jpg");
-  background-size: 100% 100%;
+  background-size: 100vw 105vh;
+  background-repeat: no-repeat;
 }
-
+body {
+  margin: 0px;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  animation-name: bgimage;
+  -webkit-animation-name: bgimage;
+  animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: stretch;
+}
 @keyframes bgimage {
   0% {
     background-color: black;
@@ -48,38 +59,11 @@ html {
     background-color: rgba(0, 0, 0, 0);
   }
 }
-@-webkit-keyframes bounceDiv {
+@-webkit-keyframes bgimage {
   0% {
     background-color: black;
   }
   100% {
     background-color: rgba(0, 0, 0, 0);
-  }
-}
-
-@keyframes bounceDiv {
-  0% {
-    top: -75vh;
-  }
-  40%,
-  60%,
-  100% {
-    top: 0vh;
-  }
-  50% {
-    top: -10;
-  }
-}
-@-webkit-keyframes bounceDiv {
-  0% {
-    top: -75vh;
-  }
-  40%,
-  60%,
-  100% {
-    top: 0vh;
-  }
-  50% {
-    top: -10;
   }
 }

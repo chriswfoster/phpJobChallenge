@@ -2,9 +2,9 @@
     <body class="cSBody">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="/CSS/customerSearch.css">
-        <div class="bounceDiv">
+        <div class="upperDiv">
         <p>Search for Clients:</p>
-        <form method="post">
+        <form method="post" id="formsubmit">
         <table border="0">
             <tr>
                 <td class="cellSizing fontWeight">Search by:</td>
@@ -27,7 +27,18 @@
                     <input id="clientSearchBox" placeholder="Type Client Name Here" type="text" name="person" size="30" />
                 </td>
             </tr>
-            <script> 
+           
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit" />
+                </td>
+            </tr>
+           
+        </table>
+    </form>
+    </div>
+    <script> 
+
 
 $("#clientsid, #clientsemail, #clientslastname").hide()
 $("#clientSelect").change(function(e) {
@@ -48,16 +59,8 @@ $("#clientSearchBox").attr("placeholder", "Type Client " + e.target.value + " He
 })
 
 
-</script>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Submit" />
-                </td>
-            </tr>
-           
-        </table>
-    </form>
 
+</script>
 
     <?php
 
@@ -110,7 +113,5 @@ function nameSearch($person, $type, $con){
         $con -> close();
 }
 ?>
-    </div>
     </body>
-
 </html>
