@@ -2,7 +2,7 @@
     <body class="cSBody">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="/CSS/customerSearch.css">
-
+        <div class="bounceDiv">
         <p>Search for Clients:</p>
         <form method="post">
         <table border="0">
@@ -106,11 +106,11 @@ function nameSearch($person, $type, $con){
      }else {
             echo "No such client found!";
         }
-        $con -> close();
         echo "</table>";
+        $con -> close();
 }
-
 ?>
-</body>
+    </div>
+    </body>
 
-    </html>
+</html>
