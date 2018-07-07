@@ -3,14 +3,16 @@
     <link rel="stylesheet" href="/CSS/customerSearch.css">
 <body class="cSBody">
 
-<p>Search for users:</p>
+<p>Search for Clients:</p>
     <form method="post">
         <table border="0">
             <tr>
                 <td class="tableSizing">Search by:</td>
                 <td>
                     <select id="clientSelect" name="type" >
-                        <option value="name"  selected="selected">Name</option>
+                        <option value="firstname" selected="selected">First Name</option>
+                        <option value="lastname">Last Name</option>
+                        <option value="email">Email</option>
                         <option value="id">ID</option>
                     </select>
                 </td>
@@ -58,24 +60,41 @@ if(mysqli_connect_errno()){
 if($_SERVER['REQUEST_METHOD']=='POST'){
 $person = $_POST["person"];
 $type = $_POST["type"];
-    idSearch($person, $type, $con);
+
+if ($type === "id"){
+    idSearch($person, $con);
+} else {
+    nameSearch($person, $type, $con);
+}
 }
 
-function idSearch($id, $type, $con) {
-  
+function idSearch($id, $con) {
     $sql = "SELECT * FROM monkedia_clients where id = $id";
     $result = mysqli_query($con, $sql);
-
     if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
         echo $row["firstname"];
-        
     }
  }else {
         echo "No such user found!";
     }
     $con -> close();
+}
 
+function nameSearch($person, $type, $con){
+ 
+    $sql = "SELECT * FROM monkedia_clients where LOWER($type) LIKE LOWER(\"%$person%\")";
+    $result = mysqli_query($con, $sql);
+    echo "<table><tr><td class='tableSizing'>First Name</td><td class='tableSizing'>Last Name</td><td class='tableSizing'>Email</td><td class='tableSizing'>Registration Date</td> </tr>";
+    if (mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<tr><td>" . $row["firstname"]. "</td><td>" . $row["lastname"]. "</td><td>" . $row["email"]. "</td><td>" . $row["reg_date"]. "</td></tr>";
+        }
+     }else {
+            echo "No such client found!";
+        }
+        $con -> close();
+        echo "</table>";
 }
 
 ?>
