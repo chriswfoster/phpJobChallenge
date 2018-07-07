@@ -7,7 +7,7 @@
         <form method="post" id="formsubmit">
         <table border="0">
             <tr>
-                <td class="cellSizing fontWeight">Search by:</td>
+                <td class="cellSizingUpper fontWeight">Search by:</td>
                 <td>
                     <select id="clientSelect" name="type" >
                         <option value="Firstname" selected="selected">First Name</option>
@@ -18,10 +18,10 @@
                 </td>
             </tr>
             <tr>
-                <td id="clientsfirstname" class="cellSizing fontWeight">Client's First Name:</td>
-                <td id="clientslastname" class="cellSizing fontWeight">Client's Last Name:</td>
-                <td id="clientsid" class="cellSizing fontWeight">Client's ID:</td>
-                <td id="clientsemail" class="cellSizing fontWeight">Client's Email:</td>
+                <td id="clientsfirstname" class="cellSizingUpper fontWeight">Client's First Name:</td>
+                <td id="clientslastname" class="cellSizingUpper fontWeight">Client's Last Name:</td>
+                <td id="clientsid" class="cellSizingUpper fontWeight">Client's ID:</td>
+                <td id="clientsemail" class="cellSizingUpper fontWeight">Client's Email:</td>
                 
                 <td align="center">
                     <input id="clientSearchBox" placeholder="Type Client Name Here" type="text" name="person" size="30" />
