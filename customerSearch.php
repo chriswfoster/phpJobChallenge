@@ -1,7 +1,13 @@
 <html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/CSS/customerSearch.css">
     <body class="cSBody">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="/CSS/customerSearch.css">
+        <nav class="navBar">
+            <p>test</p>
+            <ul>
+                <li class="fontWeight"> <a href="/customerSearch.php">Customer Search</a> </li>
+                <li class="fontWeight"> <a href="/customerAdd.php">Add Customer</a></li>
+        </nav>
         <div class="upperDiv">
         <p>Search for Clients:</p>
         <form method="post" id="formsubmit">
