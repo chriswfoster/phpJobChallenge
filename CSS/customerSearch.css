@@ -12,16 +12,20 @@
 }
 
 .navBar ul li {
-  display: inline;
   cursor: pointer;
+  display: inline;
+}
+
+.navBar ul li a {
   border: solid rgba(255, 255, 255, 0.7) 2px;
   padding: 1vh;
   margin-right: 10vw;
   margin-left: 10vw;
   border-radius: 255px;
+  width: auto;
 }
 
-.navBar ul li:hover {
+.navBar ul li a:hover {
   border: solid #4989ffb3 2px;
 }
 
@@ -63,13 +67,13 @@
   letter-spacing: 1px;
 }
 
-.innerDiv{
+.innerDiv {
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: stretch;
-	align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 .outerDiv {

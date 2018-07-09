@@ -1,45 +1,40 @@
 <html>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/CSS/customerSearch.css">
+    <title>Client/Customer Search</title>
     <body>
         <header class="navBar">
             <ul>
                 <li class="fontWeight"> <a href="/customerSearch.php">Customer Search</a> </li>
                 <li class="fontWeight"> <a href="/customerAdd.php">Add Customer</a></li>
-            </header>
+            </ul>
+        </header>
             <div class="outerDiv">
-            <div class="leftDiv">
-        <p>Search for Clients:</p>
-        <form method="post" id="formsubmit">
-        
-                <div>
-                <p class="leftPanelSizing fontWeight">Search by:</p>
-                    <select id="clientSelect" name="type" >
-                        <option value="Firstname" selected="selected">First Name</option>
-                        <option value="Lastname">Last Name</option>
-                        <option value="Email">Email</option>
-                        <option value="ID">ID</option>
-                    </select>
-                </div>
-            <div>
-                <p id="clientsfirstname" class="leftPanelSizing fontWeight">Client's First Name:</p>
-                <p id="clientslastname" class="leftPanelSizing fontWeight">Client's Last Name:</p>
-                <p id="clientsid" class="leftPanelSizing fontWeight">Client's ID:</p>
-                <p id="clientsemail" class="leftPanelSizing fontWeight">Client's Email:</p>
-                
-                <p align="center">
-                    <input id="clientSearchBox" placeholder="Type Client Name Here" type="text" name="person" size="30" />
-                </p>
-            </div>
-           
-         
-                    <input type="submit" value="Submit" />
-       
-           
-        </table>
-    </form>
-    </div>
-    <script> 
+                <div class="leftDiv">
+                    <p>Search for Clients:</p>
+                        <form method="post">
+                            <div>
+                                <p class="leftPanelSizing fontWeight">Search by:</p>
+                                <select id="clientSelect" name="type" >
+                                    <option value="Firstname" selected="selected">First Name</option>
+                                    <option value="Lastname">Last Name</option>
+                                    <option value="Email">Email</option>
+                                    <option value="ID">ID</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p id="clientsfirstname" class="leftPanelSizing fontWeight">Client's First Name:</p>
+                                <p id="clientslastname" class="leftPanelSizing fontWeight">Client's Last Name:</p>
+                                <p id="clientsid" class="leftPanelSizing fontWeight">Client's ID:</p>
+                                <p id="clientsemail" class="leftPanelSizing fontWeight">Client's Email:</p>
+                                <p align="center">
+                                <input id="clientSearchBox" class="leftPanelSizing" placeholder="Type Client Name Here" type="text" name="person" />
+                                </p>
+                            </div>         
+                            <input type="submit" value="Submit" />
+                        </form>
+                    </div>
+                    <script> 
 $("#clientsid, #clientsemail, #clientslastname").hide()
 $("#clientSelect").change(function(e) {
   if (e.target.value === "Firstname") {
