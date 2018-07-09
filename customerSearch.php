@@ -1,50 +1,45 @@
 <html>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/CSS/customerSearch.css">
-    <body class="cSBody">
-        <div class="navBar">
+    <body>
+        <header class="navBar">
             <ul>
                 <li class="fontWeight"> <a href="/customerSearch.php">Customer Search</a> </li>
                 <li class="fontWeight"> <a href="/customerAdd.php">Add Customer</a></li>
-        </div>
-        <div class="upperDiv">
+            </header>
+            <div class="outerDiv">
+            <div class="leftDiv">
         <p>Search for Clients:</p>
         <form method="post" id="formsubmit">
-        <table border="0">
-            <tr>
-                <td class="cellSizingUpper fontWeight">Search by:</td>
-                <td>
+        
+                <div>
+                <p class="leftPanelSizing fontWeight">Search by:</p>
                     <select id="clientSelect" name="type" >
                         <option value="Firstname" selected="selected">First Name</option>
                         <option value="Lastname">Last Name</option>
                         <option value="Email">Email</option>
                         <option value="ID">ID</option>
                     </select>
-                </td>
-            </tr>
-            <tr>
-                <td id="clientsfirstname" class="cellSizingUpper fontWeight">Client's First Name:</td>
-                <td id="clientslastname" class="cellSizingUpper fontWeight">Client's Last Name:</td>
-                <td id="clientsid" class="cellSizingUpper fontWeight">Client's ID:</td>
-                <td id="clientsemail" class="cellSizingUpper fontWeight">Client's Email:</td>
+                </div>
+            <div>
+                <p id="clientsfirstname" class="leftPanelSizing fontWeight">Client's First Name:</p>
+                <p id="clientslastname" class="leftPanelSizing fontWeight">Client's Last Name:</p>
+                <p id="clientsid" class="leftPanelSizing fontWeight">Client's ID:</p>
+                <p id="clientsemail" class="leftPanelSizing fontWeight">Client's Email:</p>
                 
-                <td align="center">
+                <p align="center">
                     <input id="clientSearchBox" placeholder="Type Client Name Here" type="text" name="person" size="30" />
-                </td>
-            </tr>
+                </p>
+            </div>
            
-            <tr>
-                <td colspan="2" align="center">
+         
                     <input type="submit" value="Submit" />
-                </td>
-            </tr>
+       
            
         </table>
     </form>
     </div>
     <script> 
-
-
 $("#clientsid, #clientsemail, #clientslastname").hide()
 $("#clientSelect").change(function(e) {
   if (e.target.value === "Firstname") {
@@ -92,12 +87,25 @@ function idSearch($id, $con) {
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-        echo "<table><tr><td class='cellSizing fontWeight'>User ID</td><td class='cellSizing fontWeight'>First Name</td><td class='cellSizing fontWeight'>Last Name</td><td class='cellSizing fontWeight'>Email</td><td class='cellSizing fontWeight'>Registration Date</td> </tr>";
-        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["firstname"]. "</td><td>" . $row["lastname"]. "</td><td>" . $row["email"]. "</td><td>" . $row["reg_date"]. "</td></tr>";
+        echo "<table>
+                <tr>
+                    <td class='cellSizing fontWeight'>User ID</td>
+                    <td class='cellSizing fontWeight'>First Name</td>
+                    <td class='cellSizing fontWeight'>Last Name</td>
+                    <td class='cellSizing fontWeight'>Email</td>
+                    <td class='cellSizing fontWeight'>Registration Date</td>
+                </tr>";
+        echo    "<tr>
+                    <td class='cellSizing'>" . $row["id"]. "</td>
+                    <td class='cellSizing'>" . $row["firstname"]. "</td>
+                    <td class='cellSizing'>" . $row["lastname"]. "</td>
+                    <td class='cellSizing'>" . $row["email"]. "</td>
+                    <td class='cellSizing'>" . $row["reg_date"]. "</td>
+                </tr>";
         echo "</table>";
-    }
- }else {
-        echo "No such user found!";
+        }
+    } else  {
+        echo "<div class='noDataFound'>No such client found!</div>";
     }
     $con -> close();
 }
@@ -106,17 +114,31 @@ function nameSearch($person, $type, $con){
  
     $sql = "SELECT * FROM monkedia_clients where LOWER($type) LIKE LOWER(\"%$person%\")";
     $result = mysqli_query($con, $sql);
-    echo "<table class='tableStyling'><tr><td class='cellSizing fontWeight'>User ID</td><td class='cellSizing fontWeight'>First Name</td><td class='cellSizing fontWeight'>Last Name</td><td class='cellSizing fontWeight'>Email</td><td class='cellSizing fontWeight'>Registration Date</td> </tr>";
     if (mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
-            echo "<tr><td class='cellSizing'>" . $row["id"]. "</td><td class='cellSizing'>" . $row["firstname"]. "</td><td class='cellSizing'>" . $row["lastname"]. "</td><td class='cellSizing'>" . $row["email"]. "</td><td class='cellSizing'>" . $row["reg_date"]. "</td></tr>";
+            echo    "<table class='tableStyling'>
+                        <tr>
+                            <td class='cellSizing fontWeight'>User ID</td>
+                            <td class='cellSizing fontWeight'>First Name</td>
+                            <td class='cellSizing fontWeight'>Last Name</td>
+                            <td class='cellSizing fontWeight'>Email</td>
+                            <td class='cellSizing fontWeight'>Registration Date</td>
+                        </tr>";
+            echo    "<tr>
+                        <td class='cellSizing'>" . $row["id"]. "</td>
+                        <td class='cellSizing'>" . $row["firstname"]. "</td>
+                        <td class='cellSizing'>" . $row["lastname"]. "</td>
+                        <td class='cellSizing'>" . $row["email"]. "</td>
+                        <td class='cellSizing'>" . $row["reg_date"]. "</td>
+                    </tr>";
+            echo "</table>";
         }
      }else {
-            echo "No such client found!";
+            echo "<div class='noDataFound'>No such client found!</div>";
         }
-        echo "</table>";
         $con -> close();
 }
 ?>
+        </div>
     </body>
 </html>

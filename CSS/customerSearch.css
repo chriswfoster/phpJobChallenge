@@ -1,72 +1,84 @@
 .navBar {
   background-color: rgba(0, 0, 0, 0.904);
-  border-style: solid;
   width: 100vw;
+  height: 8vh;
+  padding-top: 1vh;
   border-bottom: solid rgba(255, 255, 255, 0.7) 2px;
 }
 
 .navBar ul {
   list-style-type: none;
-  width: 100%;
   text-align: center;
 }
 
 .navBar ul li {
   display: inline;
   cursor: pointer;
-  border: solid rgba(255,255,255, 0.7) 2px;
+  border: solid rgba(255, 255, 255, 0.7) 2px;
   padding: 1vh;
   margin-right: 10vw;
   margin-left: 10vw;
-border-radius: 255px;
+  border-radius: 255px;
 }
 
 .navBar ul li:hover {
   border: solid #4989ffb3 2px;
 }
 
-.fontWeight a {
-  color: white;
-  text-decoration: none;
-}
-
 .cellSizing {
-  width: 17vw;
+  width: 22%;
   background-color: rgba(0, 0, 0, 0.904);
   color: white;
 }
-.cellSizingUpper {
-  width: 17vw;
+.leftPanelSizing {
+  width: 100%;
+  font-size: 0.75rem;
   color: white;
 }
 .tableStyling {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.upperDiv {
+.noDataFound {
+  border: white 2px;
+  border-radius: 255px;
+  padding: 1vh;
+  background-color: red;
+  height: 3.5vh;
+}
+
+.leftDiv {
   background-color: rgba(0, 0, 0, 0.7);
-  margin-top: 2vh;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: stretch;
-  padding: 0 12vw 0 12vw;
-  border-radius: 100px 100px 0 0;
+  height: 92vh;
+  width: 15vw;
   border-style: solid;
   border-width: 2px;
-  border-color: white white rgba(0, 0, 0, 0) white;
+  border-color: white white rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+  padding-top: 2vh;
 }
-.upperDiv p {
+.leftDiv p {
   color: white;
   font-weight: bold;
   letter-spacing: 1px;
 }
 
+.outerDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+
 .fontWeight {
   font-weight: bold;
   color: white;
+}
+
+.fontWeight a {
+  color: white;
+  text-decoration: none;
 }
 
 html {
@@ -79,16 +91,11 @@ body {
   position: absolute;
   width: 100vw;
   height: 100vh;
+
   animation-name: bgimage;
   -webkit-animation-name: bgimage;
   animation-duration: 3s;
   -webkit-animation-duration: 3s;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: stretch;
 }
 @keyframes bgimage {
   0% {
