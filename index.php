@@ -1,4 +1,5 @@
 <html>
+    <title>Login</title>
 <head>
     <link rel="stylesheet" href="./CSS/index.css">
 </head>
