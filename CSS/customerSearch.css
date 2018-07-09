@@ -1,15 +1,33 @@
 .navBar {
   background-color: rgba(0, 0, 0, 0.904);
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.7);
-  border-bottom: solid 2px;
+  width: 100vw;
+  border-bottom: solid rgba(255, 255, 255, 0.7) 2px;
 }
 
-.testword {
-  color: white;
-}
 .navBar ul {
   list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+
+.navBar ul li {
+  display: inline;
+  cursor: pointer;
+  border: solid rgba(255,255,255, 0.7) 2px;
+  padding: 1vh;
+  margin-right: 10vw;
+  margin-left: 10vw;
+border-radius: 255px;
+}
+
+.navBar ul li:hover {
+  border: solid #4989ffb3 2px;
+}
+
+.fontWeight a {
+  color: white;
+  text-decoration: none;
 }
 
 .cellSizing {

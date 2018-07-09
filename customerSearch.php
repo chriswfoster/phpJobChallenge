@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="/CSS/customerSearch.css">
     <body class="cSBody">
         <div class="navBar">
-            <p class="testword">test</p>
             <ul>
                 <li class="fontWeight"> <a href="/customerSearch.php">Customer Search</a> </li>
                 <li class="fontWeight"> <a href="/customerAdd.php">Add Customer</a></li>
