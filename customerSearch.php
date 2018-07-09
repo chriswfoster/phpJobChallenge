@@ -61,8 +61,8 @@ $("#clientSearchBox").attr("placeholder", "Type Client " + e.target.value + " He
 
 
 </script>
-
-    <?php
+        <div class="innerDiv">
+            <?php
 
 include 'confidential.php'; // this is a file I'm not pushing to github. It contains credentials to a MariaDB/MySQL server that I host a lot of content on :)
 $con=mysqli_connect($servername, $username, $password, $dbname); // these things are from confidential.php
@@ -86,7 +86,6 @@ function idSearch($id, $con) {
     $sql = "SELECT * FROM monkedia_clients where id = $id";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0){
-    while($row = mysqli_fetch_assoc($result)){
         echo "<table>
                 <tr>
                     <td class='cellSizing fontWeight'>User ID</td>
@@ -95,6 +94,7 @@ function idSearch($id, $con) {
                     <td class='cellSizing fontWeight'>Email</td>
                     <td class='cellSizing fontWeight'>Registration Date</td>
                 </tr>";
+    while($row = mysqli_fetch_assoc($result)){
         echo    "<tr>
                     <td class='cellSizing'>" . $row["id"]. "</td>
                     <td class='cellSizing'>" . $row["firstname"]. "</td>
@@ -102,8 +102,8 @@ function idSearch($id, $con) {
                     <td class='cellSizing'>" . $row["email"]. "</td>
                     <td class='cellSizing'>" . $row["reg_date"]. "</td>
                 </tr>";
+            }
         echo "</table>";
-        }
     } else  {
         echo "<div class='noDataFound'>No such client found!</div>";
     }
@@ -115,15 +115,15 @@ function nameSearch($person, $type, $con){
     $sql = "SELECT * FROM monkedia_clients where LOWER($type) LIKE LOWER(\"%$person%\")";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0){
+        echo    "<table class='tableStyling'>
+                    <tr>
+                        <td class='cellSizing fontWeight'>User ID</td>
+                        <td class='cellSizing fontWeight'>First Name</td>
+                        <td class='cellSizing fontWeight'>Last Name</td>
+                        <td class='cellSizing fontWeight'>Email</td>
+                        <td class='cellSizing fontWeight'>Registration Date</td>
+                    </tr>";
         while($row = mysqli_fetch_assoc($result)){
-            echo    "<table class='tableStyling'>
-                        <tr>
-                            <td class='cellSizing fontWeight'>User ID</td>
-                            <td class='cellSizing fontWeight'>First Name</td>
-                            <td class='cellSizing fontWeight'>Last Name</td>
-                            <td class='cellSizing fontWeight'>Email</td>
-                            <td class='cellSizing fontWeight'>Registration Date</td>
-                        </tr>";
             echo    "<tr>
                         <td class='cellSizing'>" . $row["id"]. "</td>
                         <td class='cellSizing'>" . $row["firstname"]. "</td>
@@ -131,14 +131,15 @@ function nameSearch($person, $type, $con){
                         <td class='cellSizing'>" . $row["email"]. "</td>
                         <td class='cellSizing'>" . $row["reg_date"]. "</td>
                     </tr>";
+                }
             echo "</table>";
-        }
      }else {
             echo "<div class='noDataFound'>No such client found!</div>";
         }
         $con -> close();
 }
 ?>
+            <div>
         </div>
     </body>
 </html>

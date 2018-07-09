@@ -26,9 +26,9 @@
 }
 
 .cellSizing {
-  width: 22%;
+  min-width: 16vw;
   background-color: rgba(0, 0, 0, 0.904);
-  color: white;
+  color: #4989ffb3;
 }
 .leftPanelSizing {
   width: 100%;
@@ -36,6 +36,7 @@
   color: white;
 }
 .tableStyling {
+  max-width: 75vw;
   background-color: rgba(255, 255, 255, 0.7);
 }
 
@@ -60,6 +61,15 @@
   color: white;
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+.innerDiv{
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
 }
 
 .outerDiv {
