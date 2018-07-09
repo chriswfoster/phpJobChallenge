@@ -29,7 +29,7 @@
  <?php
 
 include 'confidential.php'; // this is a file I'm not pushing to github. It contains credentials to a MariaDB/MySQL server that I host a lot of content on :)
-$con=mysqli_connect($servername, $username, $password, $dbname); // these $variables are from confidential.php
+$con=mysqli_connect($servername, $username, $password, $dbname, $port); // these $variables are from confidential.php
 
 // Check connection
 if(mysqli_connect_errno()){
